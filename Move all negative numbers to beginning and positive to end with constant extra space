@@ -1,0 +1,115 @@
+METHOD 1 --> Two Pointer Approach: The idea is to solve this problem with constant space and linear time is by using a two-pointer
+or two-variable approach where we simply take two variables like left and right which hold the 0 and N-1 indexes.
+Just need to check that:
+STEPS:
+1)Check If the left and right pointer elements are negative then simply increment the left pointer.
+2)Otherwise, if the left element is positive and the right element is negative then simply swap the elements,
+and Simultaneously increment or decrement the left and right pointers.
+3) Else if the left element is positive and the right element is also positive then simply decrement the right pointer.
+4) Repeat the above 3 steps until the left pointer ≤ right pointer.
+    
+METHOD 2 --> QUICK SORT
+METHOD 3 --> BRUTE FORCE APPROACH
+
+/*
+Input: -12, 11, -13, -5, 6, -7, 5, -3, -6
+Output: -12 -13 -5 -7 -3 -6 11 6 5
+*/
+/*package whatever //do not write package name here */
+
+import java.io.*;
+
+class GFG {
+    //TWO POINTER APPROACH
+    static void twoPointerApproach(int[] array){
+        int l=0,r=array.length-1;
+        while(l<=r){
+            if(array[l]<0 && array[r]<0)
+                l++;
+            else if(array[l]>0 && array[r]<0)
+            {
+                //SWAP
+               int temp = array[l];
+                array[l] = array[r];
+                array[r] = temp;
+                l++;
+                r--; 
+            }
+            else if(array[l]>0 && array[r]>0)
+                r--;
+            else 
+                l++;
+                r--;
+        }
+    }
+    
+      static void printing(int[] array){
+         for(int i=0;i<array.length;i++){
+             System.out.print(array[i]+" ");
+         }
+     }
+    
+    	public static void main (String[] args) {
+		int[] array =  { -1, 2, -3, 4, 5, 6, -7, 8, 9 };
+		
+		twoPointerApproach(array);
+		printing(array);
+    /*
+    // QUICK SORT METHOD TIME-->O(N),SPACE-->O(1)
+     static void quickSort(int array[]){
+         int i=0, temp=0;;
+         int j=array.length-1;
+         
+         while(true){
+            while(array[i]<0 && i<j)
+                i++;
+            while(array[j]>0 && i<j)
+                j--;
+            if(i<j){
+                //SWAP
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            else 
+                break;
+                
+         }
+     } 
+     
+     static void printing(int[] array){
+         for(int i=0;i<array.length;i++){
+             System.out.print(array[i]+" ");
+         }
+     }
+     
+	public static void main (String[] args) {
+		int[] array =  { -1, 2, -3, 4, 5, 6, -7, 8, 9 };
+	
+        quickSort(array);
+        printing(array);
+ */   
+		
+	/* NORMAL BRUTE FORCE APPROACH
+	int[] ans = new int[array.length];
+		
+		int pos = 0;
+		for(int i=0;i<array.length;i++){
+		    if(array[i]<0){
+		        ans[pos] = array[i];
+		        pos++;
+		    }
+		}
+			for(int j=0;j<array.length;j++){
+		    if(array[j]>0){
+		        ans[pos] = array[j];
+		        pos++;
+		    }
+		}
+		for(int x:ans){
+		    System.out.print(x+" ");
+		}
+	*/
+	}
+}
+
