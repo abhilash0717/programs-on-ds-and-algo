@@ -1,0 +1,49 @@
+/*
+THE METHOD USED HERE IS SWAPPING ELEMENTS
+ORDER OF EXECUTION TO GET THE OUTPUT
+STEP 1 --> 1 2 3 4 5
+STEP 2 --> 5 2 3 4 1
+STEP 3 --> 5 1 3 4 2
+STEP 4 --> 5 1 2 4 3
+STEP 5 --> 5 1 2 3 4 ON LAST LOOP ANSWER IS OBTAINED
+*/
+/*
+Example:
+Input:
+2
+5
+1 2 3 4 5
+8
+9 8 7 6 4 2 1 3
+
+Output:
+5 1 2 3 4
+3 9 8 7 6 4 2 1
+*/
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+	Scanner scan = new Scanner(System.in);
+	int t= scan.nextInt();
+	for(int z=0;z<t;z++){
+	    int n = scan.nextInt();
+	    int[] arr = new int[n];
+	    for(int x=0;x<n;x++)    arr[x] = scan.nextInt();
+	    
+	    int r = arr.length-1;
+	    for(int i=0;i<n;i++){
+	        int temp = arr[i];
+	        arr[i] = arr[r];
+	        arr[r] = temp;
+	    }
+	    	for(int a:arr) System.out.print(a+" ");
+	    	
+	        System.out.print("\n");
+    }
+  }
+}
