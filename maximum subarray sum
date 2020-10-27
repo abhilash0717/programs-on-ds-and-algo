@@ -1,0 +1,74 @@
+/*
+Example:
+Input
+2
+5
+1 2 3 -2 5
+4
+-1 -2 -3 -4
+Output
+9
+-1
+*/
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+	    
+	 //STEPS TO PERFORM KADANE ALGORITHM
+	 /*
+	 1-->DECLARE VARIABLES SUM=0 AND MAX, WHERE MAX CONTAINS THE FIRST ELEMENT OF THE ARRAY
+	 2-->ITERATE THROUGH ALL THE ELEMENTS IN THE ARRAY 
+	 3-->IN EVERY ITERATION ADD THE ARRAY ELEMENT TO THE SUM 
+	 4-->CHECK IF SUM IS NOW GREATER THAN MAX, IF YES THEN PUT SUM IN MAX IE.. MAX = SUM, ELSE JUST SKIP
+	 5-->IF SUM IS < 0 THEN MAKE SUM = 0
+	 6-->REPEAT THE FOLLOWING STEPS TILL YOU ITERATE THROUGH ALL THE ITEMS IN THE ARRAY
+	 7--> FINALLY PRINT THE MAX AT THE END TO RECIEVE THE ANSWER
+	 */
+	 //KADANE ALGORITHM--> 0ms
+	 Scanner scan = new Scanner(System.in);
+	 int T = scan.nextInt();
+	for(int t=0;t<T;t++){
+		int n = scan.nextInt();
+		int[] array = new int[n];
+        for(int z=0;z<n;z++){
+		  array[z] = scan.nextInt();
+		  }
+		  
+		  int sum = 0;
+		  int max = array[0];
+	    for(int i=0;i<n;i++){
+	        sum = sum + array[i];
+	        max = Math.max(sum,max);
+	        if(sum<0) sum = 0;
+	    }
+	      System.out.println(max);
+	}
+/*	
+	//BRUTE FORCE --> 99ms
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++){
+		    int n = scan.nextInt();
+		    int[] array = new int[n];
+		    for(int z=0;z<n;z++){
+		        array[z] = scan.nextInt();
+		    }
+		    long sum=0,max= array[0];
+		    for(int i=0;i<n;i++){
+		        sum = 0;
+		        for(int j=i;j<n;j++){
+		            sum = sum + array[j];
+		           if(max < sum) max = sum;
+		         
+		    }
+		    }
+		     System.out.println(max);
+		}
+	*/
+	}
+}
