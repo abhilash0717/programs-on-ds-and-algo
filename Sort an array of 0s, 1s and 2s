@@ -1,6 +1,6 @@
 METHOD 1 --> NATIONAL DUTCH FLAG ALGORITHM
 METHOD 2 --> SIMPLE BUILD-IN FUNCTION
-METHOD 3 --> WITHOUT BUILT-IN FUNCTION IN O(N) TIME
+METHOD 3 --> COUNTING SORT ALGORITHM
 /*
 Example:
 Input :
@@ -61,7 +61,7 @@ class GFG {
 	        System.out.print(a+" ");
 	    }
 	    */
-	    //O(N) -->ANOTHER GOOD FASTER METHOD
+	    //O(N) --> COUNTING SORT ALGORITHM
 	  /* int zero=0,ones=0,twos = 0;
 	    for(int i=0;i<n;i++){
 	        if(array[i] == 0){
