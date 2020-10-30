@@ -1,0 +1,22 @@
+class Solution {
+    /*
+    Input: arr = [1,2,2,6,6,6,6,7,10]
+    Output: 6
+    */
+    public int findSpecialInteger(int[] arr) {
+        int x = (int)Math.floor(arr.length*.25);
+        Map<Integer,Integer> map = new HashMap<>();
+       for(int i:arr){
+           if(!map.containsKey(i)) map.put(i,1);
+           else {
+            map.put(i,map.get(i)+1);
+           }
+       }
+      for (Map.Entry<Integer,Integer> entry : map.entrySet())  {
+          if(entry.getValue() > x){
+              return entry.getKey();
+          }
+      }
+        return -1;
+    }
+}
