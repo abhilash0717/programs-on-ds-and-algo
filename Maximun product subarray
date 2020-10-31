@@ -1,0 +1,26 @@
+class Solution {
+    /*
+    N = 5
+    Arr[] = {6, -3, -10, 0, 2}
+    Output: 180
+    */
+    // Function to find maximum product subarray
+    long maxProduct(int[] arr, int n) {
+        long max = arr[0], min = arr[0];
+        long MAX = arr[0];
+        
+        for(int i=1;i<n;i++){
+            
+            if(arr[i] < 0){
+                long temp = max;
+                max = min;
+                min = temp;
+            }   
+                max = Math.max(arr[i], max*arr[i]);
+                min = Math.min(arr[i], min*arr[i]);
+                
+                MAX = Math.max(MAX,max);
+            }
+        return MAX;
+    }
+}
