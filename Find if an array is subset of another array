@@ -1,0 +1,56 @@
+/*
+Example:
+Input:
+3
+6 4
+11 1 13 21 3 7
+11 3 7 1
+6 3
+1 2 3 4 5 6
+1 2 4
+5 3
+10 5 2 23 19
+19 5 3
+
+Output:
+Yes
+Yes
+No
+
+Explanation:
+Testcase 1: (11, 3, 7, 1) is a subset of first array.
+*/
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    static void bruteForce(List<Integer> array1,int[] array2, int n1, int n2){
+    int count = 0;
+    for(int i=0;i<n2;i++){
+          if(array1.contains(array2[i])) count++;
+      }
+      if(count == n2) System.out.println("Yes");
+      else System.out.println("No");
+    }
+    
+	public static void main (String[] args) {
+	    
+	Scanner scan = new Scanner(System.in); // ---> TAKING INPUT USING SCANNER
+	int T = scan.nextInt();                // ---> DENOTES NUMBER OF TEST CASES GIVEN IN THE PROGRAM 
+	
+	for(int t=0;t<T;t++){
+	    
+	    int n1 = scan.nextInt();               // ---> NUMBER OF ITEMS IN THE ARRAY
+	    int n2 = scan.nextInt(); 
+	    List<Integer> array1 = new ArrayList<>();            // DEFINING AN NEW ARRAY              
+	    int[] array2 = new int[n2];
+	    for(int z=0;z<n1;z++) array1.add(scan.nextInt());     // ---> STORING THE ELEMENTS INTO THE ARRAY FROM INPUT
+	    for(int Z=0;Z<n2;Z++) array2[Z] = scan.nextInt(); 
+	    
+	    bruteForce(array1,array2,n1,n2); // ---> CALLING MY METHODS
+	}
+	}
+}
