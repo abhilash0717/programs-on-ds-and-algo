@@ -1,0 +1,112 @@
+/*
+Example:
+Input:
+1
+5
+2 4 1 3 5
+
+Output:
+3
+
+Explanation:
+Testcase 1: The sequence 2, 4, 1, 3, 5 has three inversions (2, 1), (4, 1), (4, 3).
+*/
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    static void bruteForce(int[] array, int n){
+       int count = 0;
+       for(int i=0;i<n;i++){
+           for(int j=0;j<n;j++){
+               if(array[i] > array[j] && i < j) count++;
+           }
+       }
+       System.out.println(count);
+    }
+    
+  public static long merge(int[] arr, int[] aux, int low, int mid, int high)
+	{
+		int k = low, i = low, j = mid + 1;
+		long inversionCount = 0;
+
+		// While there are elements in the left and right runs
+		while (i <= mid && j <= high)
+		{
+			if (arr[i] <= arr[j]) {
+				aux[k++] = arr[i++];
+			}
+			else {
+				aux[k++] = arr[j++];
+				inversionCount += (mid - i + 1);	// NOTE
+			}
+		}
+
+		// Copy remaining elements
+		while (i <= mid)
+			aux[k++] = arr[i++];
+
+		// Don't need to copy second half
+
+		// copy back to the original array to reflect sorted order
+		for (i = low; i <= high; i++) {
+			arr[i] = aux[i];
+		}
+
+		return inversionCount;
+	}
+
+	// Sort array arr [low..high] using auxiliary array aux
+	public static long mergeSort(int[] arr, int[] aux, int low, int high)
+	{
+		// Base case
+		if (high == low) {	// if run size == 1
+			return 0;
+		}
+
+		// find mid point
+		int mid = (low + ((high - low) >> 1));
+		long inversionCount = 0;
+
+		// recursively split runs into two halves until run size == 1,
+		// then merge them and return back up the call chain
+
+		// split / merge left  half
+		inversionCount += mergeSort(arr, aux, low, mid);
+
+		// split / merge right half
+		inversionCount += mergeSort(arr, aux, mid + 1, high);
+
+		// merge the two half runs
+		inversionCount += merge(arr, aux, low, mid, high);
+
+		return inversionCount;
+	}
+  
+	public static void main (String[] args) {
+	    
+	Scanner scan = new Scanner(System.in); // ---> TAKING INPUT USING SCANNER
+	int T = scan.nextInt();                // ---> DENOTES NUMBER OF TEST CASES GIVEN IN THE PROGRAM 
+	
+	for(int t=0;t<T;t++){
+	    
+	    int n = scan.nextInt();              // ---> NUMBER OF ITEMS IN THE ARRAY
+	    int[] array = new int[n];            // DEFINING AN NEW ARRAY              
+	    
+	    for(int z=0;z<n;z++) array[z] = scan.nextInt();     // ---> STORING THE ELEMENTS INTO THE ARRAY FROM INPUT
+	    
+	   // bruteForce(array,n); // ---> CALLING MY METHODS
+	   int lb = 0;
+	   int ub = n-1;
+	   int[] aux = Arrays.copyOf(array, array.length);
+	   long inv_count = 0;
+	   inv_count = mergeSort(array,aux,lb,ub);
+	   //for(int i=0;i<n;i++) System.out.println(array[i]); 
+	   System.out.println(inv_count);
+	}
+
+	}
+}
