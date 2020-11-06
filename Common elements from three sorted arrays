@@ -1,0 +1,44 @@
+/*
+Let the current element traversed in ar1[] be x, in ar2[] be y and in ar3[] be z. We can have following cases inside the loop.
+
+    If x, y and z are same, we can simply print any of them as common element and move ahead in all three arrays.
+    Else If x < y, we can move ahead in ar1[] as x cannot be a common element.
+    Else If x > z and y > z), we can simply move ahead in ar3[] as z cannot be a common element.
+
+Below image is a dry run of the above approach:
+https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190704124815/FindCommonElementsinThreeSortedArrays.png
+*/
+
+
+//User function Template for Java
+
+class Solution
+{
+    /*
+    input:
+    n1 = 6; A = {1, 5, 10, 20, 40, 80}
+    n2 = 5; B = {6, 7, 20, 80, 100}
+    n3 = 8; C = {3, 4, 15, 20, 30, 70, 80, 120}
+    output:
+    20 80
+    */
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+      ArrayList<Integer> ans = new ArrayList<>(); 
+      int i=0,j=0,k=0;
+      while(i<n1 && j<n2 && k<n3){
+          if(A[i] == B[j] && B[j] == C[k]){
+              if(!ans.contains(A[i])){
+                 ans.add(A[i]);
+              }
+               i++;j++;k++;  
+          }
+          else if(A[i] < B[j]) i++;
+          
+          else if(B[j] < C[k]) j++;
+          
+          else k++;
+       }
+       return ans;
+    }
+}
