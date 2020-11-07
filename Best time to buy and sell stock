@@ -1,0 +1,51 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+    /*
+       //BRUTE FORCE APPROACH
+       TIME --> O(n2) HIGHLY NOT RECOMENDED AS VERY SLOW
+       SPACE--> 0(1)
+       int sub = 0,max=0;
+       for(int i=0;i<prices.length;i++){
+           for(int j=i+1;j<prices.length;j++){
+               if(prices[j] > prices[i]){
+               sub = prices[j] - prices[i];
+               max = Math.max(max,sub);
+               }
+           }
+       }
+        return max;
+    */
+        
+     /*
+     input --> 7 1 5 3 6 4
+     CREATE VARIABLES LIKE MIN, PROFIT, SUB
+     INITIALLY MIN = ARR[0], IN MIN I ALREADY HAVE THE FIRST ELEMENT
+                                            7
+     i      prices[i]      MIN=Math.min(prices[i],min)    PROFIT=prices[i]-MIN         MAX=Math.max(max,PROFIT) 
+     0        7                 (7,7) = 7                   7-7=0                       (0,0) = 0
+     1        1                 (1,7) = 1                   1-1=0                       (0,0) = 0            
+     2        5                 (5,1) = 1                   5-1=4                       (0,4) = 4  
+     3        3                 (3,1) = 1                   3-1=2                       (4,2) = 4  
+     4        6                 (6,1) = 1                   6-1=5                       (4,5) = 5 
+     5        4                 (4,1) = 1                   4-1=3                       (5,3) = 5
+     
+     FINALLY RETURN THE MAXIMUM VALUE THAT IS STORED IN MAX
+     AND THE MAX VALUE IS 5
+     THAT IS THE ANSWER AND RETURN IT
+     
+     TIME  --> O(N) BECAUSE IN ONE LOOP OR ITERATION WE HAVE OBTAINED THE MAX PROFIT
+     SPACE --> O(1) BECAUSE WE HAVE NOT USED ANY EXTRA SPACE INSTEAD WE USED THE SAME ARRAY GIVEN.
+     */
+      if(prices.length == 0) return 0;
+        
+      int min = prices[0];
+      int profit=0,max = 0;
+        
+      for(int i=0;i<prices.length;i++){
+          min = Math.min(min,prices[i]);
+          profit = prices[i] - min;
+          max = Math.max(profit,max);
+      }
+      return max;
+    }
+}
