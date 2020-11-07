@@ -1,0 +1,83 @@
+/*
+Let f(i, j) be minimum merging operations to make subarray arr[i..j] a palindrome. If i == j answer is 0. We start i from 0 and j from n-1.
+
+    If arr[i] == arr[j], then there is no need to do any merging operations at index i or index j. Our answer in this case will be f(i+1, j-1).
+    Else, we need to do merging operations. Following cases arise.
+        If arr[i] > arr[j], then we should do merging operation at index j. We merge index j-1 and j, and update arr[j-1] = arr[j-1] + arr[j]. Our answer in this case will be 1 + f(i, j-1).
+        For the case when arr[i] < arr[j], update arr[i+1] = arr[i+1] + arr[i]. Our answer in this case will be 1 + f(i+1, j).
+    Our answer will be f(0, n-1), where n is size of array arr[].
+
+Therefore this problem can be solved iteratively using two pointers
+(first pointer pointing to start of the array and second pointer pointing 
+to last element of the array) method and keeping count of total merging operations done till now.
+*/
+/*
+Input:
+2
+5
+3 2 3 3 5
+4
+5 3 3 4
+Output:
+1
+3
+*/
+/*
+case 1 : ans = 0
+  first iteration
+  3     2   3   3   5
+  l                 r
+  ans = 1
+  second iteration
+    5   3   3   5
+        l   r
+
+*/
+//TIME --> o(N) //--> the array is traversed from low to high only once
+//SPACE --> o(1) //--> because i have not created any new data structure instead used the given one
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    static void efficient_solution(int[] array, int n){
+       int low=0,high=array.length-1,ans=0;
+       while(low <= high){
+           if(array[low] == array[high]){
+               low++;high--;
+           }
+           else if(array[low] < array[high]){
+               low++;
+               array[low] = array[low] + array[low-1];
+               ans++;
+           }
+           else {
+               //if(array[low] > array[right])
+               high--;
+               array[high] = array[high] + array[high+1];
+               ans++;
+           }
+       }
+       System.out.println(ans);
+    }
+    
+	public static void main (String[] args) {
+	    
+	Scanner scan = new Scanner(System.in); // ---> TAKING INPUT USING SCANNER
+	int T = scan.nextInt();                // ---> DENOTES NUMBER OF TEST CASES GIVEN IN THE PROGRAM 
+	
+	for(int t=0;t<T;t++){
+	    
+	    int n = scan.nextInt();              // ---> NUMBER OF ITEMS IN THE ARRAY
+	    int[] array = new int[n];            // DEFINING AN NEW ARRAY              
+	    
+	    for(int z=0;z<n;z++) array[z] = scan.nextInt();     // ---> STORING THE ELEMENTS INTO THE ARRAY FROM INPUT
+	    
+	    
+	    //bruteForce_solution(array,n); // ---> CALLING MY METHODS
+	    efficient_solution(array,n);
+	}
+	}
+}
