@@ -1,0 +1,78 @@
+/*
+Input:
+2
+8
+3 4 1 9 56 7 9 12
+5
+7
+7 3 2 4 9 12 56
+3
+
+Output:
+6
+2
+
+Explanation:
+Testcase 1: The minimum difference between maximum chocolates
+and minimum chocolates is 9-3=6
+*/
+/*
+FIRSTLY THEY HAVE GIVEN AN ARRAY WHICH ARE CHILDREN WHICH ARE HAVING DIFFERNET NUMBER OF CANDIES
+LETS STORE SOME BIG VALUE IN MIN_DIFF
+NEXT THEY HAVE GIVEN THE VALUE M WHICH IS THE NUMBER OF KIDS V HAVE TO SELECT AT ONCE
+WE NOW SORT THE ARRAY
+IN FIRST ITERATION WE CONSIDER M KIDS AND FIND THE DIFFERENCE BETWEEN THE KIDS WHO IS HAVING MAX CANDIES AND WITH THE KID 
+WHO IS HAVING MINIMUM CANDIES
+WE THEN CHECK THIS DIFF WITH MIN_DIFF AND WE STORE THE MIN IN THESE TWO IN OUR ANSWER
+AT THE END WE PRINT THE MIN_DIFF
+EXAMPLE
+8
+3 4 1 9 56 7 9 12
+5
+
+SORTED ARRAY => 1 3 4 7 9 9 12 56
+WE TAKE ELEMENTS BETWEEN ARRAY[I] AND ARRAY[I+M-1], HERE -1 IS BECAUSE WE NEED EXACTLY M KIDS NOT MORE THAN THAT
+1st ITERATION --> 1 3 4 7 9 => DIFF = 8, Math.min(8,min_diff), min_diff = 8
+2nd ITERATION --> 3 4 5 9 9 => DIFF = 6, Math.min(6,min_diff), min_diff = 6
+3rd ITERATION --> 4 7 9 9 12 => DIFF = 8, Math.min(8,min_diff), min_diff = 6
+4th ITERATION --> 7 9 9 12 56 => DIFF = 49, Math.min(49,min_diff), min_diff = 6
+LASTLY WE PRINT THE MIN_DIFF WHICH IS 6 AND THE CORRECT ANSWER
+*/
+/*
+TIME --> O(nlogn) --> BECAUSE WE ARE THE SORTING THE ARRAY
+SPACE --> O(1) --> NOT DEFINED ANY NEW ARRAY OR OTHER DATA STRUCTURE
+*/
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    static void bruteForce(int n, int[] array, int m){
+       Arrays.sort(array);
+       int min = Integer.MAX_VALUE,diff=0;
+       for(int i=0;i+m-1<n;i++){
+           diff = array[i+m-1] - array[i];
+           min = Math.min(diff,min);
+       }
+       System.out.println(min);
+    }
+    
+	public static void main (String[] args) {
+	    
+	Scanner scan = new Scanner(System.in); // ---> TAKING INPUT USING SCANNER
+	int T = scan.nextInt();                // ---> DENOTES NUMBER OF TEST CASES GIVEN IN THE PROGRAM 
+	
+	for(int t=0;t<T;t++){
+	    
+	    int n = scan.nextInt();              // ---> NUMBER OF ITEMS IN THE ARRAY
+	    int[] array = new int[n];            // DEFINING AN NEW ARRAY              
+	    
+	    for(int z=0;z<n;z++) array[z] = scan.nextInt();     // ---> STORING THE ELEMENTS INTO THE ARRAY FROM INPUT
+	    int m = scan.nextInt();
+	    
+	    bruteForce(n,array,m); // ---> CALLING MY METHODS
+	}
+	}
+}
