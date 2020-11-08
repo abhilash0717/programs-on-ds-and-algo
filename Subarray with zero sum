@@ -1,0 +1,60 @@
+/*
+2
+5
+4 2 -3 1 6
+5
+4 2 0 1 6
+Output:
+Yes
+Yes
+*/
+/*package whatever //do not write package name here */
+/*
+FIRST WE WILL TAKE TWO VARIABLES
+ONE IS SUM WHERE I WILL ADD THE ELEMENTS OF THE ARRAY TO CHECK IF I GET THE SUM AS 0 OR NOT
+NEXT IS FLAG VARIABLE WHICH IS SET TO TRUE WHEN I FIND THE SUM AS 0
+FIRST LOOP THROUGH THE ARRAY AND ADD EACH ELEMENT TO THE SUM
+CHECK IF THE SUM IS 0 OR THE ELEMENT ITSELF IS ZERO OR IF THE SUM IS ALREADY IN HASHSET
+IF THE SUM IS ALREADY IN HASHSET IT MEANS THAT THE SUBARRAY HAS THE SUM AS 0 
+THEN SET THE FLAG AS TRUE ELSE SET THE FLAG AS FALSE
+IF THE FLAG IS TRUE THEN PRINT AS YES ELSE PRINT AS NO
+*/
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    
+     static void hashing(int[] array, int n){
+       int sum = 0;
+       Boolean flag = false;
+       HashSet<Integer> set = new HashSet<>();
+       for(int i=0;i<n;i++){
+           sum = sum + array[i];
+           
+           if(sum == 0 || array[i] ==0 || set.contains(sum)){
+               flag = true;
+           }
+           set.add(sum);
+       }
+       if(flag) System.out.println("Yes");
+       else System.out.println("No");
+    }
+	public static void main (String[] args) {
+	    
+	Scanner scan = new Scanner(System.in); // ---> TAKING INPUT USING SCANNER
+	int T = scan.nextInt();                // ---> DENOTES NUMBER OF TEST CASES GIVEN IN THE PROGRAM 
+	
+	for(int t=0;t<T;t++){
+	    
+	    int n = scan.nextInt();              // ---> NUMBER OF ITEMS IN THE ARRAY
+	    int[] array = new int[n];            // DEFINING AN NEW ARRAY              
+	    
+	    for(int z=0;z<n;z++) array[z] = scan.nextInt();     // ---> STORING THE ELEMENTS INTO THE ARRAY FROM INPUT
+	    
+	    
+	    //bruteForce(array,n); // ---> CALLING MY METHODS
+	    hashing(array,n); 
+	}
+	}
+}
