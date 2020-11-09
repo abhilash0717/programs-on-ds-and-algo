@@ -1,0 +1,135 @@
+/*
+nput:
+2
+6 13
+1 4 45 6 10 8
+5 10
+1 2 4 3 6
+
+Output:
+1
+1
+
+Explanation:
+Testcase 1: There is one triplet with sum 13 in the array.
+Triplet elements are 1, 4, 8, whose sum is 13.
+*/
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    /*
+    BRUTE FORCE IS THE BASIC APPROACH OF USING 3 LOOPS
+    ITS TIME COMPLEXITY WILL BE O(n3)
+    AND ITS SPACE COMPLEXITY IS O(1)
+    I CHOOSE ONE ELEMENT IN ALL LOOPS AND ADD THOSE 3 ELEMENTS AND
+    CHECK IF THEY ARE EQUAL TO GIVEN SUM
+    IF YES THEN PRINT 1 OR ELSE THEN PRINT 0
+    */
+    
+    static void bruteForce(int[] array, int n, int s){
+        int count = 0;
+        for(int i=0;i<n-2;i++){
+            for(int j=i+1;j<n-1;j++){
+                for(int k=j+1;k<n;k++){
+                    if(array[i] + array[j] + array[k] == s) count++;
+                }
+            }
+        }
+         if(count!=0) System.out.println(1);
+         else System.out.println(0);
+    }
+    
+    /*
+   This method uses sorting to increase the efficiency of the code. 
+
+    Approach:
+    By Sorting the array the efficiency of the algorithm can be improved.
+    This efficient approach uses the two-pointer technique. 
+    Traverse the array and fix the first element of the triplet.
+    Now use the Two Pointers algorithm to find if there is a pair whose sum is equal to x – array[i]. 
+    Two pointers algorithm take linear time so it is better than a nested loop.
+    
+    Algorithm : 
+        => Sort the given array.
+        => Loop over the array and fix the first element of the possible triplet, arr[i].
+        => Then fix two pointers, one at i + 1 and the other at n – 1. And look at the sum, 
+        => If the sum is smaller than the required sum, increment the first pointer.
+        => Else, If the sum is bigger, Decrease the end pointer to reduce the sum.
+        => Else, if the sum of elements at two-pointer is equal to given sum then print the triplet and break.
+
+    */
+    static void bruteForce1(int[] array, int n, int s){
+       Arrays.sort(array); 
+      int count = 0;
+       for(int i=0;i<n-2;i++){
+           int sum = s - array[i];
+           int j = i+1, k=n-1;
+           while(j<k){
+               if(array[j] + array[k] == sum) {
+                 count++;
+                  break;
+               }
+               else if(array[j] + array[k] < sum) j++;
+               else k--;
+           }
+       }
+       if(count!=0) System.out.println(1);
+       else System.out.println(0);
+    }
+    
+    /*
+    Approach:
+     This approach uses extra space but is more simpler than the two pointers approach. 
+     Run two loops outer loop from start to end and inner loop from i+1 to end.
+     Create a hashmap or set to store the elements in between i+1 to j-1. 
+     So if the given sum is x, check if there is a number in the set which is equal to x – arr[i] – arr[j]. 
+     If yes print the triplet. 
+ 
+Algorithm: 
+    =>Traverse the array from start to end. (loop counter i)
+    =>Create a HashMap or set to store unique pairs.
+    =>Run another loop from i+1 to end of the array. (loop counter j)
+    =>If there is an element in the set which is equal to x- arr[i] – arr[j], then print the triplet (arr[i], arr[j], x-arr[i]-arr[j]) and break
+    =>Insert the jth element in the set.
+    */
+    
+    static void Hashing(int[] array, int n, int s){
+        int count = 0;
+        for(int i=0;i<n-2;i++){
+            int sum = s - array[i];
+            HashSet<Integer> set = new HashSet<>();
+            for(int j=i+1;j<n;j++){
+                if(set.contains(sum - array[j])) {
+                    count++;
+                    break;
+                }
+                set.add(array[j]);
+            }
+        }
+         if(count!=0) System.out.println(1);
+         else System.out.println(0);
+    }
+    
+	public static void main (String[] args) {
+	    
+	Scanner scan = new Scanner(System.in); // ---> TAKING INPUT USING SCANNER
+	int T = scan.nextInt();                // ---> DENOTES NUMBER OF TEST CASES GIVEN IN THE PROGRAM 
+	
+	for(int t=0;t<T;t++){
+	    
+	    int n = scan.nextInt();  
+	    int s = scan.nextInt();// ---> NUMBER OF ITEMS IN THE ARRAY
+	    int[] array = new int[n];            // DEFINING AN NEW ARRAY              
+	    
+	    for(int z=0;z<n;z++) array[z] = scan.nextInt();     // ---> STORING THE ELEMENTS INTO THE ARRAY FROM INPUT
+	    
+	    bruteForce(array,n,s);
+	    //bruteForce1(array,n,s); // ---> CALLING MY METHODS
+	    //Hashing(array,n,s);
+	}
+	}
+}
