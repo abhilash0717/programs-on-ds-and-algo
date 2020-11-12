@@ -1,0 +1,30 @@
+package introduction;
+
+import java.util.*;
+
+public class RemoveDuplicatesInString {
+
+	public static void main(String[] args) {
+		String S = "test string";
+		
+		HashMap<Character, Integer> map = new HashMap<>();
+		
+		char[] array = S.toCharArray();
+		for(int i=0;i<array.length;i++) {
+			if(!map.containsKey(array[i])) map.put(array[i],1);
+			else {
+				map.put(array[i],map.get(array[i])+1);
+			}
+		}
+		int k = 1;
+		for (Map.Entry<Character,Integer> entry : map.entrySet())  {
+			if(entry.getValue() > k) {
+				System.out.println(entry.getKey() +"-->"+ entry.getValue());
+			}
+	      }
+	}
+
+}
+//Output:
+//s-->2
+//t-->3
