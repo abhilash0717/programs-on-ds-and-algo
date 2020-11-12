@@ -1,0 +1,20 @@
+class Solution {
+    public void reverseString(char[] s) {
+       //TWO POINTER'S APPROACH 
+    // TIME --> O(N)
+    //SPACE --> O(1)
+        char temp;
+        int left = 0,right=s.length-1;
+        
+        while(left <= right){
+            //SWAPPING DONE HERE
+            temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+            
+            left++;right--;
+            
+        }
+        
+    }
+}
