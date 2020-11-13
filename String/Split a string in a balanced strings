@@ -1,0 +1,49 @@
+/*
+Input: s = "RLRRLLRLRL"
+Output: 4
+Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
+*/
+/*
+STEPS FOR BELOW ALGORITHM ARE
+--> DECLARE VARIABLES AS COUNT AND ANS
+--> I CONVERTED THE STRING TO CHAR ARRAY TO ITERATE EASILY
+--> WHILE ITERATING IF I ENCOUNTER 'R' THEN I INCREMENT COUNT
+--> IF I ENCOUNTER 'L' THEN I DECREMENT COUNT IE., ITS A BALANCED STRING
+--> I CHECK IF MY COUNT BECOMES 0 THEN ITS A BALANCED STRING
+--> AND I INCREMENT MY ANS VARIABLE TO COUNT NUMBER OF BALANCED STRINGS
+--> AT THE END I RETRUN THE ANSWER WHICH CONTAINS THE NUMBER OF BALANCED STRINGS
+*/
+/*
+EXAMPLE HERE : "RLLLLRRRLR"
+0 1 2 3 4 5 6 7 8 9
+R L L L L R R R L R
+
+R --> COUNT = 1
+L --> COUNT = 0 --> ANS = 1 --> BALANCED STRING FOUND
+L --> COUNT = -1
+L --> COUNT = -2
+L --> COUNT = -3
+R --> COUNT = -2
+R --> COUNT = -1
+R --> COUNT = 0 --> ANS = 2 --> BALANCED STRING FOUND
+L --> COUNT = -1
+R --> COUNT = 0 --> ANS = 3 --> BALANCED STRING FOUND
+
+LOOP ENDS AND FINAL ANSWER IS STORED IN ANS
+RETURN ANS
+*/
+
+class Solution {
+    public int balancedStringSplit(String s) {
+        int count = 0,ans =0;
+        char[] array = s.toCharArray();
+        
+        for(int i=0;i<array.length;i++){
+            if(array[i] == 'R') count++;
+            else count--;
+            
+            if(count ==0) ans++;
+        }
+        return ans;
+    }
+}
