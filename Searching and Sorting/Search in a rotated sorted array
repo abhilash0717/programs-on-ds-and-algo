@@ -1,0 +1,47 @@
+/*
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Input: nums = [1], target = 0
+Output: -1
+*/
+class Solution {
+    public int search(int[] nums, int target) {
+       /* 
+        // LINEAR SEARCH APPROACH IS USED HERE
+        //IE., I CHECK FOR EACH ELEMENT IN THE ARRAY
+        //IF IT IS EQUAL TO TARGET ELEMENT OR NOT
+        //HENCE MY TIME COMPLEXITY IS O(N)
+        // O(n) --> simple one loop 
+        // if target there then ill return the index
+        // else i will just return -1
+        */
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] == target) return i;
+        }
+        return -1;
+        
+        // BINARY SEARCH METHOD IS NOT REQUIRED HERE
+        // BECAUSE THE ARRAY IS NOT SORTED
+        // IF THE GIVEN ARRAY WAS SORTED THN USE BINARY SEARCH
+        /*
+        Arrays.sort(nums);
+        
+        int low=0,high=nums.length-1;
+        
+        while(low <= high){
+            
+            int mid = (low+high)/2;
+            
+            if(nums[mid] == target) return mid;
+            
+            if(target < nums[mid]) high = mid - 1;
+            
+            else low = mid + 1;
+             
+        }
+        return -1;
+        */
+    }
+}
