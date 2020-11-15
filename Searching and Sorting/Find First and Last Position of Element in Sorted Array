@@ -1,0 +1,70 @@
+
+/*
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+Input: nums = [], target = 0
+Output: [-1,-1]
+*/
+class Solution {
+    public int[] searchRange(int[] array, int target) {
+        /*
+        --> TIME COMPLEXITY - o(N) AND SPACE COMPLEXITY IS O(1) AND RUNTIME IS 1MS
+        --> IN BELOW METHOD I CREATED TWO VARIABLES
+        -->FIRST AND LAST WHERE I STORED VALUE OF INTEGER.MIN_VALUE IN BOTH
+        --> NOW I START TRAVERSING THE ARRAY AND IF I FIND THE TARGET THEN
+        --> I CHECK IF MY FIRST VARIABLE IS UPDATED OR NOT, BECAUSE I WANT MY FIRST VARIABLE TO KEEP FIRST OCCURENCE
+        --> AND NOT KEEP UPDATING IT SO THERE'S A IF CONDITION FOR CHECKING THIS
+        --> NEXT I UPDATE LAST VARIABLE TO HOLD THE LAST OCCURENCE OF THE TARGET
+        --> FIRST IS UPDATED ONLY ONCE AND LAST IS UPDATED EVERYTIME TO STORE THE LAST OCCURENCE
+        --> I CHECK IF THE FIRST AND LAST ARE NOT UPDATED EVEN WHEN THE LOOP FINISHES 
+        --> IT MEANS THAT THE ARRAY IS EITHER EMPTY OR THE ARRAY DOES NOT CONTAIN THE TARGET 
+        --> IN THAT CASE I RETURN -1 
+        --> IF THEY ARE UPDATED THEN I RETURN THE FIRST AND LAST POSITION OF THE TARGET
+        */
+        int first = Integer.MIN_VALUE,last = Integer.MIN_VALUE;
+        for(int i=0;i<array.length;i++){
+           if(array[i] == target) {
+               if(first == Integer.MIN_VALUE) first = i;
+               last = i;
+           }
+       }
+        if(first == Integer.MIN_VALUE) first = -1;
+        if(last == Integer.MIN_VALUE) last = -1;
+        int[] ans = new int[2];
+        ans[0] = first;
+        ans[1] = last;        
+        return ans;
+        
+        /*
+        --> TIME COMPLEXITY - o(N) AND SPACE COMPLEXITY IS O(1) AND RUNTIME IS 0MS
+        --> HERE IN THIS METHOD I AM USIG TWO WHILE LOOPS
+        --> ONE WHILE IS TO TRAVERSE FROM LEFT TO RIGHT AND STORE THE FIRST OCCURENCE AND BREAK
+        --> ANOTHER WHILE LOOP IS TO TRAVERSE FROM RIGHT TO LEFT TO STORE THE LAST OCCURNCE OF THE VARIABLE
+        --> NEXT OPERATION IS SAME AS ABOVE
+        */
+        /*
+        int left=0,right=nums.length-1,min=Integer.MAX_VALUE,max=Integer.MIN_VALUE;
+        while(left<=right){
+            if(nums[left] == target){
+                min = Math.min(min,left);
+                break;
+            } 
+            left++;
+            }
+         while(left<=right){
+            if(nums[right] == target){
+                max = Math.max(max,right);
+                break;
+            } 
+             right--;
+            }
+        if(max == Integer.MIN_VALUE) max = -1;
+        if(min == Integer.MAX_VALUE) min = -1;
+        int[] ans = new int[2];
+        ans[0] = min;
+        ans[1] = max;
+        
+        return ans;
+        */
+    }
+}
