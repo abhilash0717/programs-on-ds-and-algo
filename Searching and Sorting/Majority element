@@ -1,0 +1,57 @@
+/*
+Input: [3,2,3]
+Output: 3
+Input: [2,2,1,1,1,2,2]
+Output: 2
+*/
+class Solution {
+    public int majorityElement(int[] array) {
+        /*
+        BELOW IMPLEMENTATION IS MOORE'S VOTING ALGORITHM
+        TIME COMPLEXITY - O(N) AND SPACE COMPLEXITY IS O(1) --> 1MS
+        STEPS:
+        --> FIRST TAKE A VARIABLE CALLED COUNT AND ELEMENT
+        -->NOW TRAVERSE THROUGH THE LOOP
+        --> IF THE COUNT IS ZERO THEN STORE THE ELEMENT IN THE ELEMENT VARIABLE
+        --> ELSE CHECK IF THE ELEMENT IS SAME AS I THEN INCREMENT COUNT ELSE DECREMENT
+        --> RETURN THE ELEMENT VARIABLE AT THE END OF THE PROGRAM
+        
+         EX:- 2 2 1 1 1 2 2      O/P=2
+         I          COUNT(INITIALLY ZERO)       ELEMENT
+         2                 1                       2
+         2                 2                       2
+         1                 1                       2 
+         1                 0                       1 ==> COUNT BECOMES 0 SO I WILL UPDATE ELEMENT WITH I, ELSE IGNORE
+         1                 1                       1
+         2                 0                       1 ==> COUNT BECOMES 0 UPDATE ELEMENT WITH I
+         2                 1                       2 ==> THIS IS FINAL ANSWER AND THIS IS MAJORITY ELEMENT
+         
+        */
+        
+        int count = 0,element = 0;
+        
+        for(int i : array){
+            if(count == 0) element = i;
+            
+            if(element == i) count++;
+            else count--;
+        }
+        return element;
+        
+        
+      /*  TIME COMPLEXITY O(N) AND SPACE COMPLEXITY O(N) --> 7MS
+      THIS METHOD IS SELF EXPLANATORY USING AN HASHMAP
+      -->PUSH ALL THE ELEMENTS IN THE MAP
+      -->CHECK IF ANY ELEMENT IS REPEATED MORE THAN N/2 TIMES AND THEN JUST RETURN THAT ELEMENT
+      
+      HashMap<Integer, Integer> map = new HashMap<>(); 
+       for(Integer I : array){
+           if(!map.containsKey(I)) map.put(I,1);
+           else map.put(I, map.get(I)+1);   
+       }
+        for(Map.Entry<Integer, Integer> entry : map.entrySet())
+           if(entry.getValue() > array.length/2) return entry.getKey();
+        return -1;
+    */
+    }
+}
