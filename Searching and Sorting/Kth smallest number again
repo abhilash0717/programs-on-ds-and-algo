@@ -1,0 +1,30 @@
+package introduction;
+import java.util.*;
+
+public class BishuAndSoldiers {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int n = scan.nextInt();
+		int[] array = new int[n];
+		for(int z=0;z<n;z++) array[z] = scan.nextInt();
+		
+		int p = scan.nextInt();
+		for(int P=0;P<p;P++) {
+			int e = scan.nextInt();
+			int count=0,sum=0;
+			
+			for(int i=0;i<n;i++) {
+				if(array[i] <= e) {
+					count++;
+					sum += array[i];
+				}
+			}
+			System.out.println();
+			System.out.print(count+" "+sum);
+		}		
+	
+	}
+
+}
