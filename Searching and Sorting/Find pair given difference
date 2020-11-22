@@ -1,0 +1,35 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    static void bruteForce(int[] array, int n, int diff){
+        boolean flag = false;
+       for(int i=0;i<n;i++){
+           for(int j=i+1;j<n;j++){
+               if(Math.abs(array[i] - array[j]) == diff) flag = true;
+           }
+       }
+       if(flag) System.out.println(1);
+       else System.out.println(-1);
+    }
+    
+	public static void main (String[] args) {
+	    
+	Scanner scan = new Scanner(System.in); // ---> TAKING INPUT USING SCANNER
+	int T = scan.nextInt();                // ---> DENOTES NUMBER OF TEST CASES GIVEN IN THE PROGRAM 
+	
+	for(int t=0;t<T;t++){
+	    
+	    int n = scan.nextInt();              // ---> NUMBER OF ITEMS IN THE ARRAY
+	    int d = scan.nextInt();
+	    int[] array = new int[n];            // DEFINING AN NEW ARRAY              
+	    
+	    for(int z=0;z<n;z++) array[z] = scan.nextInt();     // ---> STORING THE ELEMENTS INTO THE ARRAY FROM INPUT
+	    
+	    
+	    bruteForce(array,n,d); // ---> CALLING MY METHODS
+	}
+	}
+}
