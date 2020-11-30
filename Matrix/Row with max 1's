@@ -1,0 +1,19 @@
+class Solution {
+    int rowWithMax1s(int arr[][], int n, int m) {
+       int count,max=0,idx=0;
+       
+       for(int i=0;i<n;i++){
+           count = 0;
+           int[] temp = arr[i];
+           for(int j=0;j<m;j++){
+               if(temp[j] == 1) count++;
+           }
+           if(count > max){
+               max = count;
+               idx = i;
+           }
+       }
+       if(max == 0) return -1;
+       else return idx;
+    }
+}
