@@ -1,0 +1,30 @@
+class Solution {
+    public int maxNumberOfBalloons(String text) {
+        int[] arr = new int[5];   // store the occurences of the basic five characters.
+        for(char c : text.toCharArray())
+        {
+            switch(c) {
+                case 'b' : arr[0]++;
+                    break;
+                case 'a' : arr[1]++;
+                    break;
+                case 'l' : arr[2]++;
+                    break;
+                case 'o' : arr[3]++;
+                    break;
+                case 'n' : arr[4]++;
+                    break;
+            }
+        }
+        
+        arr[2] /= 2;  //divide for the char 'l'
+        arr[3] /= 2;  // divide for the char 'o'
+        int min = Integer.MAX_VALUE;
+        for(int i = 0; i < arr.length; i++)
+        {
+            if(arr[i] < min) min = arr[i];
+        }
+        return min;
+        
+    }
+}
