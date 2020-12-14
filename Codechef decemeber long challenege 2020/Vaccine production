@@ -1,0 +1,51 @@
+package introduction;
+import java.util.*;
+class VaccineProduction {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	
+	int d1 = scan.nextInt();
+	int v1 = scan.nextInt();
+	int d2 = scan.nextInt();
+	int v2 = scan.nextInt();
+	int totalLimit = scan.nextInt();
+	 
+	int first = 0,second = 0,firstV=0,secondV=0;
+	int count = 0;
+	int total = 0;
+			if(d1 > d2) {
+				first = d2;
+				firstV = v2;
+				second = d1;
+				secondV = v1;
+			}
+			else if(d1 < d2) {
+				first = d1;
+				firstV = v1;
+				second = d2;
+				secondV = v2;
+			}
+			else {
+				first = d1;
+				firstV = v1;
+				second = d2;
+				secondV = v2;
+			}
+			count = Math.abs(first - 1);
+			while(total < totalLimit) {
+				if(first < second) {
+					first++;
+					total = total + firstV;
+					count++;
+				}
+				else {
+					total = total + firstV + secondV;
+					count++;
+				}
+			}
+			
+		System.out.println(count);
+		}
+	}
+
