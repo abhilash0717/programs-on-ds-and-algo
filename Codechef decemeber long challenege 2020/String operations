@@ -1,0 +1,81 @@
+package introduction;
+import java.util.*;
+public class StringOperations {
+
+	public static void main(String[] args) {
+	
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			String s = scan.next();
+			
+			HashSet<String> set = new HashSet<>();
+			HashSet<String> oddSet = new HashSet<>();
+			HashSet<String> evenSet = new HashSet<>();
+			int idx = 0;
+			String temp = "";
+			for(int i=0;i<s.length();i++) {
+				temp = "";
+				for(int j=idx+i;j<s.length();j++) {
+					temp = temp + s.charAt(j);
+					set.add(temp);
+					//System.out.println(temp);
+					idx++;
+				}
+				idx=0;
+			}
+			int count = 0;
+			for(String z : set) {
+				String temp1 = z;
+				count = 0;
+				for(int x=0;x<temp1.length();x++) {
+					if(temp1.charAt(x) == '1') {
+						count++;
+					}
+				}
+				if(count%2==0 || count == 0) {
+					evenSet.add(z);
+				}
+				else {
+					oddSet.add(z);
+				}
+			}
+			boolean flag = false;
+			int countForZeroLength = 0;
+			for(String e : evenSet) {
+				String temp2 = e;
+				flag = true;
+				for(String f : evenSet) {
+					if(e != f) {
+						if(temp2.length() == f.length()) {
+							flag = true;
+							//System.out.println(temp2 +" "+ f);
+							String temp3 = "";
+							for(int c=temp2.length()-1;c>0;c--) {
+								temp3 += temp2.charAt(c);
+								
+							}
+							//System.out.println(temp3);
+							if(temp3.equals(f)){
+								evenSet.remove(f);
+							}
+							
+						}
+						
+					}
+				}
+				if(flag == false) {
+					countForZeroLength++;
+					
+				}
+			}
+			System.out.println(countForZeroLength);
+			for(String X:evenSet) {
+				//System.out.println(X);
+			}
+		}
+
+	}
+
+}
