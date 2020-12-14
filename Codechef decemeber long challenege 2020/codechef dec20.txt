@@ -1,0 +1,697 @@
+PROBLEM 1 --> vaccine production
+method 1:
+0 points
+package introduction;
+import java.util.*;
+class VaccineProduction {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	
+	int d1 = scan.nextInt();
+	int v1 = scan.nextInt();
+	int d2 = scan.nextInt();
+	int v2 = scan.nextInt();
+	int totalLimit = scan.nextInt();
+	
+	//if d1 == d2 or the first subtask
+	if(d1 == 1 && d2 ==1) {
+		int count = 0;
+		int total = 0;
+		while(total < totalLimit) {
+			total = total + v1 + v2;
+			count++;
+			}
+		System.out.println(count);
+		}
+
+	//second subtask when d1 != d2
+	else {
+		int total = 0,count=1;
+		while(total < totalLimit) {
+			if(count >= d1 && count >= d2) {
+				//System.out.println(count+"-->"+total+"--> first");
+				total = total + v1 + v2;
+				count++;
+			}
+			
+			else if(count >= d1 && count < d2) {
+				//System.out.println(count+"-->"+total+"--> second");
+				total = total + v1;
+				count++;
+			}
+			
+			else if(count >= d2 && count < d1) {
+				//System.out.println(count+"-->"+total+"--> third");
+				total = total + v2;
+				count++;
+			}
+			else {
+				//System.out.println(count+"-->"+total+"--> fourth");
+				count++;
+			}
+			
+		}
+		
+		System.out.println(count);
+	}
+	
+	}
+
+}
+===========================================================
+method 2: 70 points
+package introduction;
+import java.util.*;
+class VaccineProduction {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	
+	int d1 = scan.nextInt();
+	int v1 = scan.nextInt();
+	int d2 = scan.nextInt();
+	int v2 = scan.nextInt();
+	int totalLimit = scan.nextInt();
+	
+	//if d1 == 1 && d2 == 1 or the first subtask
+	if(d1 == 1 && d2 ==1) {
+		int count = 0;
+		int total = 0;
+		while(total < totalLimit) {
+			total = total + v1 + v2;
+			count++;
+			}
+		System.out.println(count);
+		}
+
+	//second subtask 
+	else {
+			int first = 0,second = 0,firstV=0,secondV=0;
+			if(d1 > d2) {
+				first = d2;
+				firstV = v2;
+				second = d1;
+				secondV = v1;
+			}
+			if(d1 < d2) {
+				first = d1;
+				firstV = v1;
+				second = d2;
+				secondV = v2;
+			}
+			
+			int i = 1,count = 0;
+			count = Math.abs(first - 1);
+			int total = 0;
+			while(total < totalLimit) {
+				if(first < second) {
+					first++;
+					total = total + firstV;
+					count++;
+				}
+				else {
+					total = total + firstV + secondV;
+					count++;
+				}
+			}
+			
+		System.out.println(count);
+		}
+	}
+}
+==============================================================
+method : 3
+//package introduction;
+import java.util.*;
+class VaccineProduction {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	
+	int d1 = scan.nextInt();
+	int v1 = scan.nextInt();
+	int d2 = scan.nextInt();
+	int v2 = scan.nextInt();
+	int totalLimit = scan.nextInt();
+	
+	//if d1 == 1 && d2 == 1 or the first subtask
+	if(d1 == 1 && d2 ==1) {
+		int total = v1 + v2;
+		int count = (totalLimit/total)+1;
+		System.out.println(count);
+		
+	}
+	//second subtask 
+	else {
+			int first = 0,second = 0,firstV=0,secondV=0;
+			if(d1 > d2) {
+				first = d2;
+				firstV = v2;
+				second = d1;
+				secondV = v1;
+			}
+			if(d1 < d2) {
+				first = d1;
+				firstV = v1;
+				second = d2;
+				secondV = v2;
+			}
+			
+			int i = 1,count = 0;
+			count = Math.abs(first - 1);
+			int total = 0;
+			while(total < totalLimit) {
+				if(first < second) {
+					first++;
+					total = total + firstV;
+					count++;
+				}
+				else {
+					total = total + firstV + secondV;
+					count++;
+				}
+			}
+			
+		System.out.println(count);
+		}
+	}
+}
+==================================================
+
+method - 4: 100 points
+
+//package introduction;
+import java.util.*;
+class VaccineProduction {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	
+	int d1 = scan.nextInt();
+	int v1 = scan.nextInt();
+	int d2 = scan.nextInt();
+	int v2 = scan.nextInt();
+	int totalLimit = scan.nextInt();
+	 
+	int first = 0,second = 0,firstV=0,secondV=0;
+	int count = 0;
+	int total = 0;
+			if(d1 > d2) {
+				first = d2;
+				firstV = v2;
+				second = d1;
+				secondV = v1;
+			}
+			else if(d1 < d2) {
+				first = d1;
+				firstV = v1;
+				second = d2;
+				secondV = v2;
+			}
+			else {
+				first = d1;
+				firstV = v1;
+				second = d2;
+				secondV = v2;
+			}
+			count = Math.abs(first - 1);
+			while(total < totalLimit) {
+				if(first < second) {
+					first++;
+					total = total + firstV;
+					count++;
+				}
+				else {
+					total = total + firstV + secondV;
+					count++;
+				}
+			}
+			
+		System.out.println(count);
+		}
+	}
+
+******************************************************************************************************************************************************************
+PROBLEM 2 : Even pair sum
+method 1 : 20 points
+
+//package introduction;
+import java.util.*;
+class EvenPairSum {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		try{
+		for(int t=0;t<T;t++) {
+			long A = scan.nextLong();
+			long B = scan.nextLong();
+			
+			int idx1=0,idx2=0;
+			long[] arrayA = new long[(int) A];
+			for(int i=1;i<=A;i++) arrayA[idx1++] = i;
+			
+			long[] arrayB = new long[B];
+			for(int I=1;I<=B;I++) arrayB[idx2++] = I;
+			
+			int count = 0;
+			for(int j=0;j<arrayA.length;j++) {
+				for(int k=0;k<arrayB.length;k++) {
+					long total = arrayA[j] + arrayB[k];
+					//System.out.println(arrayA[j]+" "+arrayB[k]);
+					if(total%2==0) count++;
+				}
+			}
+			System.out.println(count);
+			
+			}
+		}catch(Exception e){
+	    return;
+	}
+	}
+}
+========================================================
+method 2 : 20 points TLE
+
+package introduction;
+import java.util.*;
+class EvenPairSum {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			long A = scan.nextLong();
+			long B = scan.nextLong();
+			
+			ArrayList<Long> arrayA = new ArrayList<>();
+			for(long i=1;i<=A;i++) arrayA.add(i);
+			
+			ArrayList<Long> arrayB = new ArrayList<>();
+			for(long I=1;I<=B;I++) arrayB.add(I);
+			
+			int count = 0;
+			for(int j=0;j<arrayA.size();j++) {
+				for(int k=0;k<arrayB.size();k++) {
+					long total = arrayA.get(j) + arrayB.get(k);
+					//System.out.println(arrayA[j]+" "+arrayB[k]);
+					if(total%2==0) count++;
+				}
+			}
+			System.out.println(count);
+			
+			}
+		}
+}
+=========================================================
+method 3 :
+
+package introduction;
+import java.util.*;
+class EvenPairSum {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			long A = scan.nextLong();
+			long B = scan.nextLong();
+			
+			ArrayList<Long> arrayA = new ArrayList<>();
+			for(long i=1;i<=A;i++) arrayA.add(i);
+			
+			long even=0,odd=0;
+			ArrayList<Long> arrayB = new ArrayList<>();
+			for(long I=1;I<=B;I++) {
+				arrayB.add(I);
+				if(I%2==0) even++;
+				else odd++;
+			}
+			
+			long total = 0;
+			for(long j : arrayA) {
+				if(j%2==0) total = total + even;
+				else total = total + odd;
+			}
+			System.out.println(total);
+			}
+		}
+}
+============================================================================
+method 4 : correct answer --> 100 points
+
+//package introduction;
+import java.util.*;
+class EvenPairSum {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			long A = scan.nextLong();
+			long B = scan.nextLong();
+			
+			long total = 0,evenA=0,oddA=0,evenB=0,oddB=0;
+			
+			if(A%2 == 0) {
+				 evenA = A/2;
+				 oddA = A/2;
+			}else {
+				evenA = A/2;
+				oddA = (A/2) + 1;
+			}
+			
+			if(B%2==0) {
+				 evenB = B/2;
+				 oddB = B/2;
+			}
+			else {
+				evenB = B/2;
+				oddB = (B/2) + 1;
+			}
+			total = (oddA*oddB) + (evenA*evenB);
+			//System.out.println(evenA+" "+evenB);
+			System.out.println(total);
+			}
+		}
+}
+
+*********************************************************************************************************************************************************************
+PROBLEM 3 :VACCINE DISTRIBUTION
+
+method 1 : 100 points
+
+package introduction;
+import java.util.*;
+class VaccineDistribution {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			long n = scan.nextInt();
+			int d = scan.nextInt();
+			
+			ArrayList<Long> array = new ArrayList<>(); 
+			for(int x=0;x<n;x++) array.add(scan.nextLong());
+			
+			int atRisk=0,notRisk=0;
+			for(Long i : array) {
+				if(i <=9 || i>= 80) {
+					atRisk++;
+				}
+				else {
+					notRisk++;
+				}
+			}
+		int count = 0;
+		while(atRisk > 0) {
+			count++;
+			atRisk = atRisk - d;
+		}
+		while(notRisk > 0) {
+			count++;
+			notRisk = notRisk - d;
+		}
+		System.out.println(count);
+		}
+
+	}
+}
+*********************************************************************************************************************************************************************
+PROBLEM 4 : POSITIVE PREFIX
+
+method 1 : WA
+
+package introduction;
+import java.util.*;
+ class PositivePrefix {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			int n = scan.nextInt();
+			int k = scan.nextInt();
+			
+			int[] array = new int[n];
+			
+			int idx=0,i=1;
+			while(i <= n) {
+				array[idx++] = i++;
+			}
+			
+			for(int j:array) System.out.print(j+" ");
+		}
+		
+	}
+
+}
+======================================================
+method 2 :
+package introduction;
+import java.util.*;
+ class PositivePrefix {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			int n = scan.nextInt();
+			int k = scan.nextInt();
+			
+			int idx = 1;
+			while(idx <= n) {
+				if(idx <= k) {
+					System.out.print(idx+" ");
+					idx++;
+				}
+				else {
+					System.out.print(-(idx)+" ");
+					idx++;
+				}
+			}
+			
+		}
+		
+	}
+
+}
+
+==========================================================================
+method 3 : 10 points TLE
+
+package introduction;
+import java.util.*;
+ class PositivePrefix {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			int n = scan.nextInt();
+			int k = scan.nextInt();
+			
+			int neg = n - k;
+			int pos = k;
+			
+			int[] array = new int[n+1];
+			if(neg == 0) { // here if equal no of pos n neg nums
+				for(int i=1;i<=n;i++) {
+					System.out.print(i+" ");
+				}
+			}else { // if not equal pos n neg nums
+				for(int i=1;i<=n;i++) {
+					if(i%2!=0) { // looking at odd positions
+						if(pos > 0) { // 
+							array[i] = i;
+							pos--;
+						} else {
+							array[i] = -i;
+						}
+					}
+					else { // looking at even positions
+						if(neg > 0) {
+							array[i] = -i;
+							neg--;
+						}else {
+							array[i] = i;
+						}
+					}
+				}
+				
+				for(int j : array) {
+					if(j != 0)
+					System.out.print(j+" ");
+				}
+			}
+			
+		}
+		
+	}
+
+ }
+============================================================================================================
+method 4 : without using array
+
+package introduction;
+import java.util.*;
+ class PositivePrefix {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			int n = scan.nextInt();
+			int k = scan.nextInt();
+			
+			int neg = n - k;
+			int pos = k;
+			
+			
+			if(neg == 0) { // here if equal no of pos n neg nums
+				for(int i=1;i<=n;i++) {
+					System.out.print(i+" ");
+				}
+			}else { // if not equal pos n neg nums
+				for(int i=1;i<=n;i++) {
+					if(i%2!=0) { // looking at odd positions
+						if(pos > 0) { // 
+							System.out.print(i+" ");
+							pos--;
+						} else {
+							System.out.print(-i+" ");
+						}
+					}
+					else { // looking at even positions
+						if(neg > 0) {
+							System.out.print(-i+" ");
+							neg--;
+						}else {
+							System.out.print(i+" ");
+						}
+					}
+				}
+				
+			}
+	
+		}
+		
+	}
+
+ }
+=============================================================================================================================
+ method 5 : using bufferedreader
+
+package introduction;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+ class PositivePrefix {
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		
+		BufferedReader scan = new BufferedReader
+				(new InputStreamReader(System.in));
+		int T =Integer.parseInt(scan.readLine());
+		for(int t=0;t<T;t++) {
+			StringTokenizer st = new StringTokenizer(scan.readLine());
+			int n = Integer.parseInt(st.nextToken());
+			int k = Integer.parseInt(st.nextToken());
+			
+			int neg = n - k;
+			int pos = k;
+			
+			
+			if(neg == 0) { // here if equal no of pos n neg nums
+				for(int i=1;i<=n;i++) {
+					System.out.print(i+" ");
+				}
+			}
+			
+			if(neg != 0){ // if not equal pos n neg nums
+				for(int i=1;i<=n;i++) {
+					if(i%2!=0) { // looking at odd positions
+						if(pos > 0) { // 
+							System.out.print(i+" ");
+							pos--;
+						} else {
+							System.out.print(-i+" ");
+						}
+					}
+					else { // looking at even positions
+						if(neg > 0) {
+							System.out.print(-i+" ");
+							neg--;
+						}else {
+							System.out.print(i+" ");
+						}
+					}
+				}
+				
+			}
+	
+		}
+		
+	}
+
+ }
+ =================================================================================================================
+method 6 : correct answer in c++14
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	while (t--) {
+	    int n = 0;
+	    cin >> n;
+	  int k = 0;
+	cin >> k;
+
+	int neg = n - k;
+	int pos = k;
+
+	int array[n+1];	
+	for(int i=1;i<=n;i = i+ 2) {
+	      // looking at odd positions
+	    if(neg > 0) { // 
+	      array[i] = -i;
+	      neg--;
+	} else 
+	   array[i] = i;
+	}
+	
+	for(int I=2;I<=n;I = I + 2) {
+	// looking at even positions
+	if(pos > 0) {
+		array[I] = I;
+		pos--;
+	}else 
+		array[I] = -I;
+
+	}
+
+	for(int j : array) {
+		if(j != 0)
+		cout << j <<" "; 
+	}
+				
+     
+	}
+	return 0;
+}
+**************************************************************************************************************************************************************
+PROBLEM 5: HAIL XOR
