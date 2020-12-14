@@ -1,0 +1,38 @@
+package introduction;
+import java.util.*;
+class VaccineDistribution {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			long n = scan.nextInt();
+			int d = scan.nextInt();
+			
+			ArrayList<Long> array = new ArrayList<>(); 
+			for(int x=0;x<n;x++) array.add(scan.nextLong());
+			
+			int atRisk=0,notRisk=0;
+			for(Long i : array) {
+				if(i <=9 || i>= 80) {
+					atRisk++;
+				}
+				else {
+					notRisk++;
+				}
+			}
+		int count = 0;
+		while(atRisk > 0) {
+			count++;
+			atRisk = atRisk - d;
+		}
+		while(notRisk > 0) {
+			count++;
+			notRisk = notRisk - d;
+		}
+		System.out.println(count);
+		}
+
+	}
+}
