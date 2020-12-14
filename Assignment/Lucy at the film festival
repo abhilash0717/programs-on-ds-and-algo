@@ -1,0 +1,48 @@
+package introduction;
+import java.util.*;
+public class LucyAtTheFilmFestival {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
+		
+		int[] L = new int[n];
+		int[] R = new int[n];
+		
+		for(int x=0;x<n;x++) L[x] = scan.nextInt();
+		
+		for(int X=0;X<n;X++) R[X] = scan.nextInt();
+		
+		int maxRating = R[0], maxValue = R[0]*L[0];
+		int minIndex = Integer.MAX_VALUE;
+		for(int i=1;i<=L.length-1;i++) {
+			int temp = L[i] * R[i];
+			if(temp >= maxValue) {
+				if(R[i] > maxRating) {
+					if(i<minIndex) {
+						maxValue = temp;
+						maxRating = R[i];
+						minIndex = i;	
+						//System.out.print("How are you");
+					}
+				}
+				else if(R[i] == maxRating) {
+					if(i < minIndex) {
+						minIndex = i;
+						maxValue = temp;
+						maxRating = R[i];
+						//System.out.print("HI");
+					}
+				}
+				else if(R[i] < maxRating) {
+					maxRating = R[i];
+					minIndex = i;
+					//System.out.print("HI Hello");
+					
+				}
+			}
+		}
+		System.out.println(minIndex);
+	}
+
+}
