@@ -1,0 +1,63 @@
+package introduction;
+import java.util.*;
+public class HailXor {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+		
+			int N = scan.nextInt();
+			long X = scan.nextLong();
+			
+			long[] array = new long[N];
+			for(int x=0;x<N;x++) array[x] = scan.nextLong();
+			
+			int p = 1;long i=0,j=0;
+			long max = Integer.MAX_VALUE;
+			String holder = "";
+			for(int m=0;m<array.length;m++) {
+				for(int n=m+1;n<array.length;n++) {
+					long[] temp = new long[array.length];
+					System.arraycopy(array, 0, temp, 0, temp.length);
+					
+					 i = array[m];
+					 j = array[n];
+					
+					if(X%2!=0) {
+						for(int a=0;a<1;a++) {
+							i = i ^ (long)Math.pow(2,p);
+							j = j ^ (long)Math.pow(2,p);
+							//System.out.println(i+" "+j);
+						}
+					}else{
+						for(int a=0;a<2;a++) {
+							i = i ^ (long)Math.pow(2,p);
+							j = j ^ (long)Math.pow(2,p);
+						}
+					}
+					//System.out.println(i+" "+j);
+					temp[m] = i;
+					temp[n] = j;
+					String ans = "";
+					//System.out.println(temp[m]+" "+i+" "+temp[n]+" "+j);
+					for(long b : temp) {
+						ans  = ans + String.valueOf(b);
+					}
+					long convert = 0;
+					convert = (long)Integer.parseInt(ans);
+					if(convert < max) {
+						max = convert;
+						holder = ans;
+					}
+					
+				}
+			}
+			for(int b=0;b<holder.length();b++) {
+				System.out.print(holder.charAt(b)+" ");
+			}
+		}
+
+	}
+
+}
