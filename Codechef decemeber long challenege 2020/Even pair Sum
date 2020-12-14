@@ -1,0 +1,38 @@
+package introduction;
+import java.util.*;
+class EvenPairSum {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			long A = scan.nextLong();
+			long B = scan.nextLong();
+			
+			long total = 0,evenA=0,oddA=0,evenB=0,oddB=0;
+			
+			if(A%2 == 0) {
+				 evenA = A/2;
+				 oddA = A/2;
+			}else {
+				evenA = A/2;
+				oddA = (A/2) + 1;
+			}
+			
+			if(B%2==0) {
+				 evenB = B/2;
+				 oddB = B/2;
+			}
+			else {
+				evenB = B/2;
+				oddB = (B/2) + 1;
+			}
+			total = (oddA*oddB) + (evenA*evenB);
+			//System.out.println(evenA+" "+evenB);
+			System.out.println(total);
+			}
+		}
+}
+
+
