@@ -1,0 +1,38 @@
+package introduction;
+import java.util.*;
+public class VMS {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int N = scan.nextInt();
+		int M = scan.nextInt();
+		int K = scan.nextInt();
+		
+		ArrayList<Integer> ignored = new ArrayList<>();
+		ArrayList<Integer> tracked = new ArrayList<>();
+		ArrayList<Integer> totalFiles = new ArrayList<>();
+		
+		for(int x=0;x<M;x++) ignored.add(scan.nextInt()); 
+		
+		for(int X=0;X<K;X++) tracked.add(scan.nextInt()); 
+		
+		for(int z=1;z<=N;z++) totalFiles.add(z);
+		
+		int ignoredAndTrackedFiles = 0;
+		for(int i = 0;i<ignored.size();i++){
+			if(tracked.contains(ignored.get(i))) {
+				ignoredAndTrackedFiles++;
+			}
+		}
+		
+		int untrackedAndUnignoredFiles = 0;
+		for(int j=0;j<N;j++) {
+			if((!ignored.contains(totalFiles.get(j)) && (!tracked.contains(totalFiles.get(j))))){
+				untrackedAndUnignoredFiles++;
+			}
+		}
+		System.out.print(ignoredAndTrackedFiles+" "+untrackedAndUnignoredFiles);
+		
+	}
+
+}
