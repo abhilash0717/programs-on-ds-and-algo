@@ -695,3 +695,153 @@ int main() {
 }
 **************************************************************************************************************************************************************
 PROBLEM 5: HAIL XOR
+method 1 : wrong answer
+package introduction;
+import java.util.*;
+public class HailXor {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+		
+			int N = scan.nextInt();
+			long X = scan.nextLong();
+			
+			long[] array = new long[N];
+			for(int x=0;x<N;x++) array[x] = scan.nextLong();
+			
+			int p = 1;long i=0,j=0;
+			long max = Integer.MAX_VALUE;
+			String holder = "";
+			for(int m=0;m<array.length;m++) {
+				for(int n=m+1;n<array.length;n++) {
+					long[] temp = new long[array.length];
+					System.arraycopy(array, 0, temp, 0, temp.length);
+					
+					 i = array[m];
+					 j = array[n];
+					
+					if(X%2!=0) {
+						for(int a=0;a<1;a++) {
+							i = i ^ (long)Math.pow(2,p);
+							j = j ^ (long)Math.pow(2,p);
+							//System.out.println(i+" "+j);
+						}
+					}else{
+						for(int a=0;a<2;a++) {
+							i = i ^ (long)Math.pow(2,p);
+							j = j ^ (long)Math.pow(2,p);
+						}
+					}
+					//System.out.println(i+" "+j);
+					temp[m] = i;
+					temp[n] = j;
+					String ans = "";
+					//System.out.println(temp[m]+" "+i+" "+temp[n]+" "+j);
+					for(long b : temp) {
+						ans  = ans + String.valueOf(b);
+					}
+					long convert = 0;
+					convert = (long)Integer.parseInt(ans);
+					if(convert < max) {
+						max = convert;
+						holder = ans;
+					}
+					
+				}
+			}
+			for(int b=0;b<holder.length();b++) {
+				System.out.print(holder.charAt(b)+" ");
+			}
+		}
+
+	}
+
+}
+***********************************************************************************************************
+PROBLEM 6 : String operations
+method 1: wrong answer
+
+package introduction;
+import java.util.*;
+public class StringOperations {
+
+	public static void main(String[] args) {
+	
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		
+		for(int t=0;t<T;t++) {
+			String s = scan.next();
+			
+			HashSet<String> set = new HashSet<>();
+			HashSet<String> oddSet = new HashSet<>();
+			HashSet<String> evenSet = new HashSet<>();
+			int idx = 0;
+			String temp = "";
+			for(int i=0;i<s.length();i++) {
+				temp = "";
+				for(int j=idx+i;j<s.length();j++) {
+					temp = temp + s.charAt(j);
+					set.add(temp);
+					//System.out.println(temp);
+					idx++;
+				}
+				idx=0;
+			}
+			int count = 0;
+			for(String z : set) {
+				String temp1 = z;
+				count = 0;
+				for(int x=0;x<temp1.length();x++) {
+					if(temp1.charAt(x) == '1') {
+						count++;
+					}
+				}
+				if(count%2==0 || count == 0) {
+					evenSet.add(z);
+				}
+				else {
+					oddSet.add(z);
+				}
+			}
+			boolean flag = false;
+			int countForZeroLength = 0;
+			for(String e : evenSet) {
+				String temp2 = e;
+				flag = true;
+				for(String f : evenSet) {
+					if(e != f) {
+						if(temp2.length() == f.length()) {
+							flag = true;
+							//System.out.println(temp2 +" "+ f);
+							String temp3 = "";
+							for(int c=temp2.length()-1;c>0;c--) {
+								temp3 += temp2.charAt(c);
+								
+							}
+							//System.out.println(temp3);
+							if(temp3.equals(f)){
+								evenSet.remove(f);
+							}
+							
+						}
+						
+					}
+				}
+				if(flag == false) {
+					countForZeroLength++;
+					
+				}
+			}
+			System.out.println(countForZeroLength);
+			for(String X:evenSet) {
+				//System.out.println(X);
+			}
+		}
+
+	}
+
+}
+
