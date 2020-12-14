@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	while (t--) {
+	    int n = 0;
+	    cin >> n;
+	  int k = 0;
+	cin >> k;
+
+	int neg = n - k;
+	int pos = k;
+
+	int array[n+1];	
+	for(int i=1;i<=n;i = i+ 2) {
+	      // looking at odd positions
+	    if(neg > 0) { // 
+	      array[i] = -i;
+	      neg--;
+	} else 
+	   array[i] = i;
+	}
+	
+	for(int I=2;I<=n;I = I + 2) {
+	// looking at even positions
+	if(pos > 0) {
+		array[I] = I;
+		pos--;
+	}else 
+		array[I] = -I;
+
+	}
+
+	for(int j : array) {
+		if(j != 0)
+		cout << j <<" "; 
+	}
+				
+     
+	}
+	return 0;
+}
