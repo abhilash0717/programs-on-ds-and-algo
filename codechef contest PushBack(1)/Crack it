@@ -1,0 +1,23 @@
+package push_back_1;
+import java.util.*;
+public class crack_it {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+			int n = scan.nextInt();
+			int k = scan.nextInt();
+			
+			
+			if(n%2==0){
+			System.out.println((n/2)*k);	
+				
+			}else{
+			int ans=(k)+((n/2)*k);
+			System.out.println(ans);	
+			}
+		}
+	}
+
+}
