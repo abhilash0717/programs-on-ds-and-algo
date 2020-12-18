@@ -1,0 +1,47 @@
+package push_back_1;
+import java.util.*;
+public class Find_it {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	int T = scan.nextInt();
+	
+	for(int t=0;t<T;t++) {
+		long n = scan.nextLong();
+		
+	
+		long[] array = new long[(int) n];
+		for(int x=0;x<n;x++) {
+			array[x] = scan.nextLong();
+		}
+		
+		long ans = 0;
+		for(int i=0;i<n;i++) {
+			ans = ans ^ array[i];
+		}
+		
+		System.out.println(ans);
+		/*
+		HashMap<Long, Long> map = new HashMap<>();
+		for(int i=0;i<n;i++) {
+			if(!map.containsKey(array[i])) {
+				map.put(array[i], (long) 1);
+			}
+			else {
+				map.put(array[i], map.get(array[i])+1);
+			}
+		}
+		long ans = 0;
+		for(Map.Entry<Long, Long> entry : map.entrySet()) {
+			if(entry.getValue() == 1) {
+				ans = entry.getKey();
+			}
+		}
+		
+		System.out.println(ans);
+		*/
+	}
+	
+	}
+
+}
