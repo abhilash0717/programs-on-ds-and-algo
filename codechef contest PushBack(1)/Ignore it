@@ -1,0 +1,30 @@
+package push_back_1;
+import java.util.*;
+public class Ignore_it {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+	
+		for(int t=0;t<T;t++) {
+			int n  = scan.nextInt();
+			
+			ArrayList<Integer> array = new ArrayList<>();
+			for(int x=0;x<n;x++) array.add(scan.nextInt());
+			
+			int[] ans = new int[n];
+			for(int i=0;i<n;i++) {
+				if(!array.contains(i)) {
+					ans[i] = 0;
+				}
+				else {
+					ans[i] = i;
+				}
+			}
+			for(int j:ans) {
+				System.out.print(j+" ");
+			}
+		}
+	}
+
+}
