@@ -1,0 +1,14 @@
+package atcoderBeginner186;
+import java.util.*;
+public class A {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long n = scan.nextLong();
+		long k = scan.nextLong();
+		
+		System.out.println(n/k);
+
+	}
+
+}
