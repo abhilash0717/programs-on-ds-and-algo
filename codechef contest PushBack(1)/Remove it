@@ -1,0 +1,33 @@
+package push_back_1;
+import java.util.*;
+public class Remove_it {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+			String s  = scan.next();
+			
+		StringBuilder sb = new StringBuilder(s);
+		String temp = "abc";
+		while(true) {
+		if(contains(sb,temp) > -1 ) {
+			sb.delete(contains(sb,temp), contains(sb,temp)+3);
+		}
+		else {
+			break;
+		}
+		}
+		
+		System.out.println(sb.toString());
+		
+		}
+
+	}
+
+	private static int contains(StringBuilder sb, String findString ) {
+		return sb.indexOf(findString);
+		
+	}
+
+}
