@@ -1,0 +1,39 @@
+package UWCOI2021;
+import java.util.*;
+public class ArraySwaps {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long a  = scan.nextLong();
+		long b = scan.nextLong();
+		
+		long[] arrayA = new long[(int) a];
+		long[] arrayB = new long[(int) b];
+		
+		for(int x=0;x<a;x++) {
+			arrayA[x] = scan.nextLong();
+		}
+		
+		for(int X=0;X<b;X++) {
+			arrayB[X] = scan.nextLong();
+		}
+		
+		long min = Integer.MAX_VALUE;
+		for(int i=0;i<a;i++) {
+			if(arrayA[i] < min) {
+				min = arrayA[i]; 
+			}
+		}
+		long count = 0;
+		for(int j=0;j<b;j++) {
+			if(arrayB[j] < min) {
+				count++;
+			}
+			
+		}
+		
+		System.out.println(count*a);
+
+	}
+
+}
