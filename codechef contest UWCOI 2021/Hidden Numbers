@@ -1,0 +1,15 @@
+package UWCOI2021;
+import java.util.*;
+public class HiddenNumbers {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long T = scan.nextLong();
+		for(int t=0;t<T;t++) {
+			long n = scan.nextLong();
+			
+			System.out.println(1+" "+n);
+		}
+	}
+
+}
