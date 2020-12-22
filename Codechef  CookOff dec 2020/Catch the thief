@@ -1,0 +1,51 @@
+package decCookOff2020;
+import java.util.*;
+public class CatchTheThief {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long T = scan.nextLong();
+		
+		for(int t=0;t<T;t++) {
+			long x = scan.nextLong();
+			long y = scan.nextLong();
+			long k = scan.nextLong();
+			long n = scan.nextLong();
+			
+			boolean flag = false;
+			long tempx = x, tempy = y, tempk = k,tempn = n;
+			while(x >= 0 && x<=n && y >=0 && y <= n) {
+				if(x == y) {
+				//	System.out.println(x +" "+ y+"first");
+					flag = true;
+					break;
+				}
+				else {
+					x = x + k;
+					y = y - k;
+				}
+			}
+			
+			while(tempx >= 0 && tempx<=tempn && tempy >=0 && tempy <= tempn) {
+				if(tempx == tempy) {
+					//System.out.println(tempx +" "+ tempy+"second");
+					flag = true;
+					break;
+				}
+				else {
+					tempx = tempx - tempk;
+					tempy = tempy + tempk;
+				}
+			}
+			
+			if(flag == true) {
+				System.out.println("Yes");
+			}
+			else {
+				System.out.println("No");
+			}
+		}
+
+	}
+
+}
