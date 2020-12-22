@@ -1,0 +1,39 @@
+/*
+video tutorial link for more understaning
+https://www.youtube.com/watch?v=V_JCVoIskQ4
+*/
+
+package decCookOff2020;
+import java.util.*;
+class SelfDestructingStrings {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+			String s = scan.next();
+			
+			if(s.length()%2 == 0) {
+				long ones = 0, zeroes = 0;
+				for(int i=0;i<s.length();i++) {
+					if(s.charAt(i) == '0') {
+						zeroes++;
+					}
+					else {
+						ones++;
+					}
+				}
+			if(ones == 0 || zeroes == 0){
+			    System.out.println(-1);
+			}else{
+			 	System.out.println(Math.abs((ones - zeroes)/2));   
+			    }
+			}
+			else {
+				System.out.println(-1);
+			}
+		}
+
+	}
+
+}
