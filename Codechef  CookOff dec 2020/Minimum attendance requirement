@@ -1,0 +1,33 @@
+package decCookOff2020;
+import java.util.*;
+public class MinAttendanceRequirement {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	
+	int T = scan.nextInt();
+	for(int t=0;t<T;t++) {
+		int n = scan.nextInt();
+		String s = scan.next();
+		
+		float total = 120 - n;
+		float count = 0;
+		for(int i=0;i<n;i++) {
+			if(s.charAt(i) == '1') {
+				count++;
+			}
+		}
+		
+		total = (total + count)/120;
+		System.out.println(total);
+		if( total >= 0.75) {
+			System.out.println("YES");
+		}
+		else {
+			System.out.println("NO");
+		}
+	}
+
+	}
+
+}
