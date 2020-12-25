@@ -1,0 +1,49 @@
+package NumberQuest;
+import java.util.*;
+public class SantaGivesGifts {
+
+	
+	static boolean isPrime(long number) {
+		if (number <= 1) 
+	         return false; 
+	
+	        // Check from 2 to n-1 
+	        for (int j = 2; j < number; j++) {
+	        	//System.out.println("HELLO");
+	            if (number % j == 0) 
+	                return false; 
+	        }
+		return true;
+	}
+	
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long T = scan.nextLong();
+		for(int t=0;t<T;t++) {
+			long n = scan.nextLong();
+			long m = scan.nextLong();
+			long a = scan.nextLong();
+			long d = scan.nextLong();
+			
+			ArrayList<Long> checkList = new ArrayList<>();
+			int count = 0;
+			while(count < 5) {
+				checkList.add(a + (count*d));
+				count++;
+			}
+			
+			// o(2^^32) everyTime
+			long ans = 0;
+			for(long i=n;i<=m;i++) {
+				if(isPrime(i) && !checkList.contains(i)) {
+					ans++;
+				}
+			}
+			
+			System.out.println(ans);
+		}
+
+	}
+
+}
