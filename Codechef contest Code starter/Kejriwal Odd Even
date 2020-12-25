@@ -1,0 +1,34 @@
+package CodeStarter;
+import java.util.*;
+public class KejriwalOddEven {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		long T = scan.nextLong();
+		for(int t=0;t<T;t++) {
+			long number = scan.nextLong();
+			
+			String s = Long.toString(number);
+			char[] array = s.toCharArray();
+			long odd=0,even = 0;
+			for(char i : array) {
+				long n = (long)i - 48 ;
+				if(n%2==0) {
+					even+=n;
+				}
+				else {
+					odd+=n;
+				}
+			}
+			if(even%4==0 || odd%3==0) {
+				System.out.print("Yes ");
+			}
+			else {
+				System.out.print("No ");
+			}
+		}
+	
+	}
+
+}
