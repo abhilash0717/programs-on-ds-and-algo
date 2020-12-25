@@ -1,0 +1,62 @@
+package NumberQuest;
+import java.util.*;
+public class ChocoPrime {
+
+	static boolean isPrime(long n) {
+		  if (n <= 1) 
+	         return false; 
+	
+	        // Check from 2 to n-1 
+	        for (int i = 2; i < n; i++) {
+	        	//System.out.println("HELLO");
+	            if (n % i == 0) 
+	                return false; 
+	        }
+	        return true; 
+	}
+	
+	static boolean isPalindrome(long num) {
+		String nums = Long.toString(num); 
+		char[] array = nums.toCharArray();
+		int l = 0,r = array.length-1;
+		while(l<=r) {
+			if(array[l] != array[r]) {
+				return false;
+			}
+			else {
+				l++;
+				r--;
+			}
+		}
+		return true;
+	}
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+			long number = scan.nextLong();
+			
+			if(number < 10) {
+				System.out.println("No");
+			}
+			else {
+				Boolean flag = isPrime(number);
+				if(flag == true) {
+					boolean flagP = isPalindrome(number);
+					if(flagP == true) {
+						System.out.println("Yes");
+					}
+					else {
+						System.out.println("No");
+					}
+				}
+				else {
+					System.out.println("No");
+				}
+			}
+		}
+
+	}
+
+}
