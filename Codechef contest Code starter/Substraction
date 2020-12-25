@@ -1,0 +1,28 @@
+package CodeStarter;
+import java.util.*;
+public class Substraction {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long number = scan.nextLong();
+		long k = scan.nextLong();
+		
+		//Time complexity here is o(k)
+		while(k > 0) {
+			String num = Long.toString(number);
+			char[] array = num.toCharArray();
+			if(array[array.length-1] != '0') {
+				number = number - 1;
+				k--;
+			}
+			else {
+				number = number/10;
+				k--;
+			}
+		}
+		
+		System.out.println(number);
+
+	}
+
+}
