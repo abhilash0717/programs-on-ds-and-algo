@@ -1,0 +1,39 @@
+package CodeStarter;
+import java.util.*;
+public class FindTheImposter {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		long n1 = scan.nextLong();
+		long n2 = n1+1 ;
+		
+		ArrayList<Integer> array = new ArrayList<>();
+	
+		for(int x=0;x<n1;x++) {
+			array.add(scan.nextInt());
+		}
+		for(int X=0;X<n2;X++) {
+			array.add(scan.nextInt());
+		}
+		
+		HashMap<Integer, Integer> map = new HashMap<>();
+		for(int i=0;i<array.size();i++) {
+			if(!map.containsKey(array.get(i))) {
+				map.put(array.get(i), 1);
+			}
+			else {
+				map.put(array.get(i), map.get(array.get(i))+1);
+			}
+		}
+		int ans = 0;
+		for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			if(entry.getValue() == 1) {
+				ans = entry.getKey();
+			}
+		}
+		System.out.println(ans);
+
+	}
+
+}
