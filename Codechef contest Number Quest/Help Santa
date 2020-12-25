@@ -1,0 +1,19 @@
+package NumberQuest;
+import java.util.*;;
+public class HelpSanta {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		long n = scan.nextLong();
+		HashSet<Integer> set = new HashSet<>();
+		for(long x = 0;x<n;x++) {
+			set.add(scan.nextInt());
+			
+		}
+		for(int i:set) {
+			System.out.print(i+" ");
+		}
+	}
+
+}
