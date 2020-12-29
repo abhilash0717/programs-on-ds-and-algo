@@ -1,0 +1,26 @@
+package encodingDecember2020;
+import java.util.*;
+public class TeamStrength {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+			long x = scan.nextLong();
+			long y = scan.nextLong();
+			long temp = 0,ans = 0,count = 0;
+			while(temp < x) {
+				if(temp <= 9) {
+					ans = ans + temp;
+				}
+				else {
+					ans = ans + temp%10;
+				}
+				temp = temp + y;
+			}
+		System.out.println(ans);	
+		}
+
+	}
+
+}
