@@ -1,0 +1,41 @@
+package decemberLunchTime;
+import java.util.*;
+public class OneZeroSwaps {
+
+	public static void main(String[] args) {
+	Scanner scan = new Scanner(System.in);
+	long T = scan.nextLong();
+	for(long t=0;t<T;t++) {
+		long n = scan.nextLong();
+		String s = scan.next();
+		String p = scan.next();
+		
+		long oneS = 0, zeroS = 0, oneP = 0, ZeroP = 0;
+		for(int i=0;i<s.length();i++){
+			if(s.charAt(i) == '1') {
+				oneS++;
+			}
+			else {
+				zeroS++;
+			}
+		}
+		for(int j=0;j<p.length();j++){
+			if(p.charAt(j) == '1') {
+				oneP++;
+			}
+			else {
+				ZeroP++;
+			}
+		}
+		
+		if(oneS == oneP && ZeroP == zeroS) {
+			System.out.println("Yes");
+		}
+		else {
+			System.out.println("No");
+		}
+	}
+
+	}
+
+}
