@@ -1,0 +1,38 @@
+package encodingDecember2020;
+import java.util.*;
+public class HappyKids {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+			long n = scan.nextLong();
+			long x = scan.nextLong();
+			
+			long[] array = new long[(int) n];
+			for(int z=0;z<n;z++) {
+				array[z] = scan.nextLong();
+			}
+			
+			long biggest = array[0];
+			long smallest = array[0];
+			for(int i=0;i<array.length;i++) {
+				if(array[i] > biggest) {
+					biggest = array[i];
+				}
+				
+				if(array[i] < smallest) {
+					smallest = array[i];
+				}
+			}
+			if(biggest - smallest <= x) {
+				System.out.println("YES");
+			}
+			else {
+				System.out.println("NO");
+			}
+		}
+
+	}
+
+}
