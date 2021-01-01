@@ -1,0 +1,26 @@
+package push_back_end;
+import java.util.*;
+public class CubeEnd {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int T = scan.nextInt();
+		for(int t=0;t<T;t++) {
+			int n = scan.nextInt();
+			
+			int count = 1,total = 1;
+			while(count <= n) {
+				total += count*count;
+				count++;
+			}
+			count = count - 1;
+			while(count > 1) {
+				total += count*count;
+				count--;
+			}
+			System.out.println(total);
+		}
+
+	}
+
+}
