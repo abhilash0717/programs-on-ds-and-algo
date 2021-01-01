@@ -1,0 +1,29 @@
+package push_back_end;
+import java.util.*;
+public class DigitsEnd {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long T = scan.nextLong();
+		for(int t=0;t<T;t++) {
+			long number = scan.nextLong();
+			long temp = number;
+			long total = 0;
+			while(number > 0) {
+				int rem = (int) (number%10);
+				total += rem;
+				number = number/10;	
+				}
+			//System.out.println(total);
+			if(temp%total == 0) {
+				System.out.println("Yes");
+			}
+			else {
+				System.out.println("No");
+			}
+			
+		}
+
+	}
+
+}
