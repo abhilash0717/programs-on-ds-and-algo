@@ -1,0 +1,20 @@
+package push_back_end;
+import java.util.*;
+public class SeriesEnd {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long T = scan.nextLong();
+		for(int t=0;t<T;t++) {
+			long number = scan.nextLong();
+			long count = 0,ans = 0;
+			while(count < number) {
+				ans += (count*count);
+				count++;
+			}
+			System.out.println(ans);
+		}
+
+	}
+
+}
