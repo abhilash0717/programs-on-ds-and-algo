@@ -1,0 +1,31 @@
+package push_back_end;
+import java.util.*;
+public class DivideEnd {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		long T = scan.nextLong();
+		for(int t=0;t<T;t++) {
+			long number = scan.nextLong();
+			
+			boolean flag = false;
+			while(number > 0) {
+				int rem = (int) (number%10);
+				if(rem%2 == 0) {
+					flag = true;
+					break;
+				}
+				
+				number = number/10;
+			}
+			if(flag == true) {
+				System.out.println(1);
+			}
+			else{
+				System.out.println(0);
+			}
+		}
+
+	}
+
+}
