@@ -1,0 +1,27 @@
+class GfG
+{
+    // head: head node
+    Node removeDuplicates(Node head)
+    {
+        //ITERATIVE APPROACH
+        if(head == null){
+            return head;
+        }
+        // 2 -> 2 -> 2 -> 2 -> 2
+        // ^    ^
+        // ^         ^
+        // ^              ^
+        // ^                    ^
+        // ^ --> return head
+        Node dummy = head;
+        while(dummy.next != null && dummy != null){
+            if(dummy.data == dummy.next.data){
+                dummy.next = dummy.next.next;
+            }else{
+                dummy = dummy.next;    
+            }
+            
+        }
+        return head;
+    }
+}
