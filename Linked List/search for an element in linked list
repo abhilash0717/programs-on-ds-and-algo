@@ -1,0 +1,19 @@
+/*
+*Iterative solution
+*/
+
+public static boolean findElement(Node head, int element){
+    if(head == null){
+      return false;
+    }
+    
+    Node temp = head;
+    while(temp != null){
+        if(temp.val == element){
+            return true;
+        }else{
+            temp = temp.next;
+        }
+    }
+    return false;
+}
