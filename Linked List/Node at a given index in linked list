@@ -1,0 +1,18 @@
+class GfG
+{
+   
+    public static int getNth(Node head, int ind) {
+        //iterative solution
+       if(head == null){
+           return 0;
+       }
+       
+       Node dummy = head;
+       int idx = 1;
+       while(idx < ind){
+           dummy = dummy.next;
+           idx++;
+       }
+       return dummy.data;
+    }
+}
