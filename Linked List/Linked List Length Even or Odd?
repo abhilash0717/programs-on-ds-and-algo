@@ -1,0 +1,28 @@
+class GFG
+{
+	int isLengthEvenorOdd(Node head)
+	{
+	   //recursive solution
+	   int count = 0;
+	   if(head == null){
+	       return 0;
+	   }
+	   else{
+	       count = 1 + isLengthEvenorOdd(head.next);
+	   }
+	   return count%2;
+	    
+	  /*  //Iterative solution
+	    if(head == null){
+	        return 0;
+	    }
+	    Node dummy = head;
+	    int idx = 0;
+	    while(dummy != null){
+	        idx++;
+	        dummy = dummy.next;
+	    }
+	    return idx%2;
+	    */
+	}
+}
