@@ -1,0 +1,34 @@
+class Solution
+{
+    static int countNodesinLoop(Node head)
+    {
+        if(head == null){
+            return 0;
+        }
+        
+        Node slow = head;
+        Node fast = head;
+        
+        boolean flag = false;
+        while(slow != null && fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                flag = true; // Using Floyd's detection cycle algorithm
+               break; // To know if a loop exists in the list
+            }
+        }
+        if(flag == true){ // If a loop exists in the list then i would find the length between
+            Node temp = slow; // slow pointer node and the fast pointer node
+            int count = 1; // which gives me the total length
+            while(temp.next != fast){
+                count++;
+                temp = temp.next;
+            }
+            return count;       
+        }else{
+             // If there is no loop then i would return just 0 as the output
+            return 0;
+        }
+    }
+}
