@@ -17,3 +17,24 @@ public static boolean findElement(Node head, int element){
     }
     return false;
 }
+
+//Recursive solution
+
+public static boolean findElement(Node head, int element){
+    //Even after searching the whole linked list
+    //If the element is not present in the list 
+    //Then i would return false from here
+    if(head == null){
+        return false;
+    }
+    //if the element is present in the linked list then
+    //I would return true from here
+    if(head.val == element){
+        return true;
+    }
+    else{
+        //Traversing the list from here
+        //by calling the next element by a recursive call
+        findElement(head.next, element);
+    }
+}
