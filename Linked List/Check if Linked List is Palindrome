@@ -1,0 +1,30 @@
+class Palindrome
+{
+    // Function to check if linked list is palindrome
+    boolean isPalindrome(Node head) 
+    {
+        if(head == null){
+            return false;
+        }
+        
+        int count = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        Node dummy = head;
+        while(dummy != null){
+            list.add(dummy.data);
+            count++;
+            dummy = dummy.next;
+        }
+        
+        int l = 0, r = count-1;
+        while(l <= r){
+            if(list.get(l) != list.get(r)){
+                return false;
+            }
+            else{
+                l++;r--;
+            }
+        }
+        return true;
+    }    
+}
