@@ -1,0 +1,23 @@
+    public static int getCount(Node head)
+    {
+        //Recursive solution
+        if(head == null){
+            return 0;
+        } 
+            return 1 + getCount(head.next);
+        
+       /*  Iterative solution
+        Node temp = head;
+        int count = 0;
+        if(head == null){
+            return 0;
+        }
+        
+        while(temp != null){
+            count++;
+            temp = temp.next;
+        }
+        
+        return count;
+        */
+    }
