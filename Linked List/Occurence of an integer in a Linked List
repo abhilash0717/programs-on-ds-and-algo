@@ -1,0 +1,22 @@
+class GfG
+{
+    public static int count(Node head, int search_for)
+    {
+       int count = 0;
+       if(head == null){
+           return 0;
+       }
+       
+       Node dummy = head;
+       while(dummy != null){
+           if(dummy.data == search_for){
+               count++;
+               dummy = dummy.next;
+           }
+           else{
+               dummy = dummy.next;
+           }
+       }
+       return count;
+    }
+}
