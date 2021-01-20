@@ -1,0 +1,20 @@
+public static int countPairs(Node head, int x){
+ if(head == null){
+    return 0
+   }
+ Node dummy = head;
+ Node dummy1 = head;
+ while(dummy != null){
+    while(dummy1.next != null){
+        if(dummy.data + dummy1.data == x){
+            count++;
+            dummy1 = dummy1.next;
+        }else{
+          dummy1 = dummy1.next;
+        }
+     }
+     dummy = dummy.next;
+  }
+  
+  return count;
+}
