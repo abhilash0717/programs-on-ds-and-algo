@@ -1,0 +1,53 @@
+package introduction;
+import java.util.*;
+public class Testa {
+
+
+    static void solve(int n, int[] array){
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0;i<n;i++){
+            if(!map.containsKey(array[i])){
+                map.put(array[i], 1);
+            }else{
+                map.put(array[i], map.get(array[i])+1);
+            }
+        }
+        
+        int c = 0;
+        int[] fre = new int[map.size()];
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+            fre[c++] = entry.getValue();
+        }
+        
+        Arrays.sort(fre);
+        int biggest = 0;
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        for(int m=fre.length-1;m>=0;m--){
+        	 biggest = 0;
+             for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+                if(entry.getValue() == fre[m]){
+                //	System.out.println(entry.getValue());
+                    if(entry.getKey() > biggest && !ans.contains(entry.getKey())){
+                        biggest = entry.getKey();
+                    }
+                }
+            }
+            if(!ans.contains(biggest)){
+                ans.add(biggest);
+            }
+        }
+        
+        for(Integer a : ans){
+            System.out.print(a+" ");
+        }
+        
+    }
+	public static void main(String[] args) {
+		 int n = 5;
+		 int[] array = {5,5,5,1,2};
+		 solve(n, array);
+
+	}
+
+}
